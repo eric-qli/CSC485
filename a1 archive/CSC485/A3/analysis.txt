@@ -1,0 +1,63 @@
+% Student name: Yinuo Zhao
+% Student number: 1007672494
+% UTORid: zhaoy239
+
+% This code is provided solely for the personal and private use of students
+% taking the CSC485H/2501H course at the University of Toronto. Copying for
+% purposes other than this use is expressly prohibited. All forms of
+% distribution of this code, including but not limited to public repositories on
+% GitHub, GitLab, Bitbucket, or any other online platform, whether as given or
+% with any changes, are expressly prohibited.
+
+% Authors: Ken Shi, Jingcheng Niu and Gerald Penn
+
+% All of the files in this directory and all subdirectories are:
+% Copyright (c) 2024 University of Toronto
+
+2(a)
+sentence(28) 2 readings
+exists x.(student(x) ^ forall y.(course(y) => take(x, y)))
+forall y.(course(y) => exists x.(student(x) ^ take(x, y)))
+sentence(30) 1 reading
+exists x.(student(x) ^ forall y.(course(y) => take(x, y)))
+
+2(e)
+I tested GPT4 on interpreting the meaning of sentence (27), (28), (29), (30).
+The prompt that I used is "can you list the interpretation  of [sentence], report all interpretations if there are more than one."
+Note that for the Chinese sentence, I use the Chinese characters as input rather than pinyin.
+
+Below are the results:
+
+(27) Every student takes a course. 
+    My grammar outputs two parsing as the sentence is ambiguous.
+    GPT 4 produces the same two interpretaion with the following explaination:
+	    1.	Universal Quantification Over Existential (All Students, At Least One Course Each)
+	    2.	Existential Quantification Over Universal (Every Student Takes Some Course, Possibly Different)
+
+(28) A student takes every course.
+    My grammar outputs two parsing as the sentence is ambiguous.
+    GPT4 is only able to capture one of the interpretation: 
+        1. Esistantial over universal: there exists at least one student who is enrolled in every course offered.
+
+(29) mei ge xuesheng dou huishang yi zhong kecheng.
+    My grammar outputs two parsing as the sentence is ambiguous.
+    GPT4 is only to capture of the the interpretation:
+        1. Universal Quantification Over Existential (All Students, At Least One Course Each)
+
+(30) yi ge xuesheng huishang mei zhong kecheng.
+    My grammar outputs only one parsing as the sentence is unambiguous.
+    GPT4 captures the one meaning same as it does for (28), which is correct.
+        However, it does this by first translating to English, then interpret the English sentence rather than extract meaning of the Chinese sentence directly.
+
+In summary, GPT4 does a good job when the sentence has universal quantifier that comes before the existantial quantifier. 
+I believe that is relates to the potential imbalance in the training data which impacts performance. "Every student takes 
+a course" is how we usually speek, and both meanings are commonly used. But "A student takes every course" means "there
+exists a student that takes every course" most of the time. The other meaning is uaually expressed in alternative ways
+such as "In every course, there is a student" or more simplpy "there is no empty course". This may have influenced GPT's
+performance.
+
+In addition, I used the Chinese text in the prompt, which is less familiar for GPT compare to English, due to how it is
+trained. Therefore, GPt will perform translation first then interpret the meaning. For simple sentences it may work just
+fine. But for more complex sentence or long paragraphs that involves contexts(quantifiers) that span multiple sentences or
+sub-sentences, it's performance can be potentially worse sence the translation itself may be inaccurate. Then interpreting 
+the inaccurate translation will lead to more error.
