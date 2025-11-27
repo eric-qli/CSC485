@@ -65,6 +65,59 @@ sem1(sem:S, S) if true.
 
 % === Your Code Here ===
 
+% Nouns
+pilot --->
+  (n,
+   agr:(agr, num:sg,   per:third),
+   sem:(pilot, quantity:Q)).   % Q is a quantity variable
+
+tiger --->
+  (n,
+   agr:(agr, num:sg,   per:third),
+   sem:(tiger, quantity:Q)).
+
+cat --->
+  (n,
+   agr:(agr, num:sg,   per:third),
+   sem:(cat,   quantity:Q)).
+
+% Numbers (as 'num' – a subtype of nominal)
+one --->
+  (num,
+   agr:(agr, num:sg,   per:third),
+   sem:(n_sem, quantity:one)).
+
+two --->
+  (num,
+   agr:(agr, num:pl,   per:third),
+   sem:(n_sem, quantity:two)).
+
+three --->
+  (num,
+   agr:(agr, num:pl,   per:third),
+   sem:(n_sem, quantity:three)).
+
+% Verbs (simple transitives: subject NP, object NP)
+find --->
+  (v,
+   agr:(agr, num:sg, per:third),
+   sem:(find, subj:SubjSem, obj:ObjSem),
+   subcat:(ne_list,
+           hd:(np, sem:SubjSem),
+           tl:(ne_list,
+               hd:(np, sem:ObjSem),
+               tl:e_list))).
+
+scare --->
+  (v,
+   agr:(agr, num:sg, per:third),
+   sem:(scare, subj:SubjSem, obj:ObjSem),
+   subcat:(ne_list,
+           hd:(np, sem:SubjSem),
+           tl:(ne_list,
+               hd:(np, sem:ObjSem),
+               tl:e_list))).
+
 % ======================
 
 
@@ -78,5 +131,32 @@ sem1(sem:S, S) if true.
 % cat> (type2, feature2:value2).
 
 % === Your Code Here ===
+
+% NP -> Det N
+det_n_np rule
+(np, agr:Agr, sem:Sem) ===>
+  cat> (det, agr:Agr),
+  cat> (n,   agr:Agr, sem:Sem).
+
+
+% NP -> Num N
+num_n_np rule
+(np, agr:Agr, sem:Sem) ===>
+  cat> (num, agr:Agr),
+  cat> (n,   agr:Agr, sem:Sem).
+
+
+% VP -> V NP
+v_np_vp rule
+(vp, agr:Agr, sem:Sem) ===>
+  cat> (v,  agr:Agr, sem:Sem),
+  cat> (np, agr:_).
+
+
+% S -> NP VP
+np_vp_s rule
+(s, agr:Agr, sem:Sem) ===>
+  cat> (np, agr:Agr),
+  cat> (vp, agr:Agr, sem:Sem).
 
 % ======================
