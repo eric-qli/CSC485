@@ -46,7 +46,9 @@ bot sub [cat, sem, agr, cl_types, list].
     %     ...
 
     % === Your Code Here ===
-    agr intro [].
+    agr intro [num:number].
+
+    number sub [sg, pl].
     % ======================
 
 
@@ -64,6 +66,77 @@ sem1(sem:S, S) if true.
 
 % === Your Code Here ===
 
+pilot --->
+  (n,
+   agr:agr,
+   sem:pilot).
+
+tiger --->
+  (n,
+   agr:agr,
+   sem:tiger).
+
+cat --->
+  (n,
+   agr:agr,
+   sem:cat).
+
+one --->
+  (num,
+   agr:agr,
+   sem:(n_sem, quantity:one)).
+
+two --->
+  (num,
+   agr:agr,
+   sem:(n_sem, quantity:two)).
+
+three --->
+  (num,
+   agr:agr,
+   sem:(n_sem, quantity:three)).
+
+
+ge --->
+  (cl,
+   agr:agr,
+   sem:n_sem).
+
+ming --->
+  (cl,
+   agr:agr,
+   sem:n_sem).
+
+zhi --->
+  (cl,
+   agr:agr,
+   sem:n_sem).
+
+tou --->
+  (cl,
+   agr:agr,
+   sem:n_sem).
+
+find --->
+  (v,
+   agr:agr,
+   sem:(find, subj:SubjSem, obj:ObjSem),
+   subcat:(ne_list,
+           hd:(np, sem:SubjSem),
+           tl:(ne_list,
+               hd:(np, sem:ObjSem),
+               tl:e_list))).
+
+scare --->
+  (v,
+   agr:agr,
+   sem:(scare, subj:SubjSem, obj:ObjSem),
+   subcat:(ne_list,
+           hd:(np, sem:SubjSem),
+           tl:(ne_list,
+               hd:(np, sem:ObjSem),
+               tl:e_list))).
+
 % ======================
 
 
@@ -77,5 +150,34 @@ sem1(sem:S, S) if true.
 % cat> (type2, feature2:value2).
 
 % === Your Code Here ===
+
+% CLP -> CL N
+cl_n_clp rule
+(clp, agr:Agr, sem:Sem) ===>
+  cat> (cl, agr:Agr),
+  cat> (n,  agr:Agr, sem:Sem).
+
+% NP -> NUM CLP
+num_clp_np rule
+(np, agr:Agr, sem:Sem) ===>
+  cat> (num, agr:Agr),
+  cat> (clp, agr:Agr, sem:Sem).
+
+% NP -> N
+n_np rule
+(np, agr:Agr, sem:Sem) ===>
+  cat> (n, agr:Agr, sem:Sem).
+
+% VP -> V NP
+v_np_vp rule
+(vp, agr:Agr, sem:Sem) ===>
+  cat> (v,  agr:Agr, sem:Sem),
+  cat> (np, agr:_).
+
+% S -> NP VP
+np_vp_s rule
+(s, agr:Agr, sem:Sem) ===>
+  cat> (np, agr:Agr),
+  cat> (vp, agr:Agr, sem:Sem).
 
 % ======================
