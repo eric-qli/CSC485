@@ -99,7 +99,7 @@ professor ---> (n,
     % === ========= ===
     qstore:[]).
 
-teach ---> (v,
+teaches ---> (v,
     sem:(teach, Teach),
     % === Your Code ===
     % logic:none,

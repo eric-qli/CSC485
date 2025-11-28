@@ -22,14 +22,14 @@ question(q1).
 % Type Feature Structure
 
 % Do not modify lines 25-39.
-bot sub [cat, sem, agr, cl_types, list].
+bot sub [category, sem, agr, cl_types, list].
     sem sub [n_sem, v_sem].
         n_sem sub [pilot, tiger, cat] intro [quantity:quantity].
         v_sem sub [find, scare] intro [subj:sem, obj:sem].
 
     cl_types sub [ge, ming, zhi, tou].
 
-    cat sub [nominal, verbal] intro [agr:agr, sem:sem].
+    category sub [nominal, verbal] intro [agr:agr, sem:sem].
         nominal sub [n, np, clp, num, cl] intro [sem:n_sem].
         verbal sub [v, vp, s] intro [sem:v_sem, subcat:list].
 
@@ -171,7 +171,7 @@ n_np rule
 % VP -> V NP
 v_np_vp rule
 (vp, agr:Agr, sem:Sem) ===>
-  cat> (v,  agr:Agr, sem:Sem),
+  cat> (v, agr:Agr, sem:Sem),
   cat> (np, agr:_).
 
 % S -> NP VP

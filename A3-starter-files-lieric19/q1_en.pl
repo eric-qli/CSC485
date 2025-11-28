@@ -65,7 +65,6 @@ sem1(sem:S, S) if true.
 
 % === Your Code Here ===
 
-% Nouns
 pilot --->
   (n,
    agr:(agr, num:sg,   per:third),
@@ -81,7 +80,6 @@ cat --->
    agr:(agr, num:sg,   per:third),
    sem:(cat,   quantity:Q)).
 
-% Numbers (as 'num' – a subtype of nominal)
 one --->
   (num,
    agr:(agr, num:sg,   per:third),
@@ -97,7 +95,6 @@ three --->
    agr:(agr, num:pl,   per:third),
    sem:(n_sem, quantity:three)).
 
-% Verbs (simple transitives: subject NP, object NP)
 find --->
   (v,
    agr:(agr, num:sg, per:third),
@@ -136,20 +133,20 @@ scare --->
 det_n_np rule
 (np, agr:Agr, sem:Sem) ===>
   cat> (det, agr:Agr),
-  cat> (n,   agr:Agr, sem:Sem).
+  cat> (n, agr:Agr, sem:Sem).
 
 
 % NP -> Num N
 num_n_np rule
 (np, agr:Agr, sem:Sem) ===>
   cat> (num, agr:Agr),
-  cat> (n,   agr:Agr, sem:Sem).
+  cat> (n, agr:Agr, sem:Sem).
 
 
-% VP -> V NP
+% VP -> V NP 
 v_np_vp rule
 (vp, agr:Agr, sem:Sem) ===>
-  cat> (v,  agr:Agr, sem:Sem),
+  cat> (v, agr:Agr, sem:Sem),
   cat> (np, agr:_).
 
 
