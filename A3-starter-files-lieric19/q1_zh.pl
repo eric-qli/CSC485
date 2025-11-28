@@ -66,36 +66,20 @@ sem1(sem:S, S) if true.
 
 % === Your Code Here ===
 
-pilot --->
+feixingyuan --->
   (n,
    agr:agr,
    sem:pilot).
 
-tiger --->
+hu --->
   (n,
    agr:agr,
    sem:tiger).
 
-cat --->
+mao --->
   (n,
    agr:agr,
    sem:cat).
-
-one --->
-  (num,
-   agr:agr,
-   sem:(n_sem, quantity:one)).
-
-two --->
-  (num,
-   agr:agr,
-   sem:(n_sem, quantity:two)).
-
-three --->
-  (num,
-   agr:agr,
-   sem:(n_sem, quantity:three)).
-
 
 ge --->
   (cl,
@@ -117,7 +101,7 @@ tou --->
    agr:agr,
    sem:n_sem).
 
-find --->
+zhao --->
   (v,
    agr:agr,
    sem:(find, subj:SubjSem, obj:ObjSem),
@@ -127,7 +111,7 @@ find --->
                hd:(np, sem:ObjSem),
                tl:e_list))).
 
-scare --->
+xia --->
   (v,
    agr:agr,
    sem:(scare, subj:SubjSem, obj:ObjSem),
@@ -136,6 +120,21 @@ scare --->
            tl:(ne_list,
                hd:(np, sem:ObjSem),
                tl:e_list))).
+
+yi --->
+  (num,
+   agr:agr,
+   sem:(n_sem, quantity:one)).
+
+er --->
+  (num,
+   agr:agr,
+   sem:(n_sem, quantity:two)).
+
+san --->
+  (num,
+   agr:agr,
+   sem:(n_sem, quantity:three)).
 
 % ======================
 

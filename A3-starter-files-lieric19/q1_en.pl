@@ -67,32 +67,47 @@ sem1(sem:S, S) if true.
 
 pilot --->
   (n,
-   agr:(agr, num:sg,   per:third),
-   sem:(pilot, quantity:Q)).   % Q is a quantity variable
+   agr:(agr, num:sg, per:third),
+   sem:(pilot, quantity:Q)).
+
+pilots --->
+  (n,
+   agr:(agr, num:pl, per:third),
+   sem:(pilot, quantity:Q)).
 
 tiger --->
   (n,
-   agr:(agr, num:sg,   per:third),
+   agr:(agr, num:sg, per:third),
+   sem:(tiger, quantity:Q)).
+
+tigers --->
+  (n,
+   agr:(agr, num:pl, per:third),
    sem:(tiger, quantity:Q)).
 
 cat --->
   (n,
-   agr:(agr, num:sg,   per:third),
+   agr:(agr, num:sg, per:third),
+   sem:(cat,   quantity:Q)).
+
+cats --->
+  (n,
+   agr:(agr, num:pl, per:third),
    sem:(cat,   quantity:Q)).
 
 one --->
   (num,
-   agr:(agr, num:sg,   per:third),
+   agr:(agr, num:sg, per:third),
    sem:(n_sem, quantity:one)).
 
 two --->
   (num,
-   agr:(agr, num:pl,   per:third),
+   agr:(agr, num:pl, per:third),
    sem:(n_sem, quantity:two)).
 
 three --->
   (num,
-   agr:(agr, num:pl,   per:third),
+   agr:(agr, num:pl, per:third),
    sem:(n_sem, quantity:three)).
 
 find --->
@@ -105,9 +120,49 @@ find --->
                hd:(np, sem:ObjSem),
                tl:e_list))).
 
+found --->
+  (v,
+   agr:(agr, num:sg, per:third),
+   sem:(find, subj:SubjSem, obj:ObjSem),
+   subcat:(ne_list,
+           hd:(np, sem:SubjSem),
+           tl:(ne_list,
+               hd:(np, sem:ObjSem),
+               tl:e_list))).
+
+finds --->
+  (v,
+   agr:(agr, num:pl, per:third),
+   sem:(find, subj:SubjSem, obj:ObjSem),
+   subcat:(ne_list,
+           hd:(np, sem:SubjSem),
+           tl:(ne_list,
+               hd:(np, sem:ObjSem),
+               tl:e_list))).
+
 scare --->
   (v,
    agr:(agr, num:sg, per:third),
+   sem:(scare, subj:SubjSem, obj:ObjSem),
+   subcat:(ne_list,
+           hd:(np, sem:SubjSem),
+           tl:(ne_list,
+               hd:(np, sem:ObjSem),
+               tl:e_list))).
+
+scared --->
+  (v,
+   agr:(agr, num:sg, per:third),
+   sem:(scare, subj:SubjSem, obj:ObjSem),
+   subcat:(ne_list,
+           hd:(np, sem:SubjSem),
+           tl:(ne_list,
+               hd:(np, sem:ObjSem),
+               tl:e_list))).
+
+scares --->
+  (v,
+   agr:(agr, num:pl, per:third),
    sem:(scare, subj:SubjSem, obj:ObjSem),
    subcat:(ne_list,
            hd:(np, sem:SubjSem),
