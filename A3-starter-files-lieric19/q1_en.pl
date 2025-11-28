@@ -64,111 +64,75 @@ sem1(sem:S, S) if true.
 %    feature_name_2:feature_type_2, ...). 
 
 % === Your Code Here ===
+a ---> (det,
+        sem:(quantity:one),
+        agr:(num:singular)).
 
-pilot --->
-  (n,
-   agr:(agr, num:sg, per:third),
-   sem:(pilot, quantity:Q)).
+one ---> (num,
+          sem:(quantity:one),
+          agr:(num:singular)).
 
-pilots --->
-  (n,
-   agr:(agr, num:pl, per:third),
-   sem:(pilot, quantity:Q)).
+two ---> (num,
+          sem:(quantity:two),
+          agr:(num:plural)).
 
-tiger --->
-  (n,
-   agr:(agr, num:sg, per:third),
-   sem:(tiger, quantity:Q)).
+three ---> (num,
+            sem:(quantity:three),
+            agr:(num:plural)).
 
-tigers --->
-  (n,
-   agr:(agr, num:pl, per:third),
-   sem:(tiger, quantity:Q)).
+pilot ---> (n,
+            sem:(pilot, quantity:_),
+            agr:(num:singular)).
 
-cat --->
-  (n,
-   agr:(agr, num:sg, per:third),
-   sem:(cat,   quantity:Q)).
+pilots ---> (n,
+             sem:(pilot, quantity:_),
+             agr:(num:plural)).
 
-cats --->
-  (n,
-   agr:(agr, num:pl, per:third),
-   sem:(cat,   quantity:Q)).
+tiger ---> (n,
+            sem:(tiger, quantity:_),
+            agr:(num:singular)).
 
-one --->
-  (num,
-   agr:(agr, num:sg, per:third),
-   sem:(n_sem, quantity:one)).
+tigers ---> (n,
+             sem:(tiger, quantity:_),
+             agr:(num:plural)).
 
-two --->
-  (num,
-   agr:(agr, num:pl, per:third),
-   sem:(n_sem, quantity:two)).
+cat ---> (n,
+          sem:(cat, quantity:_),
+          agr:(num:singular)).
 
-three --->
-  (num,
-   agr:(agr, num:pl, per:third),
-   sem:(n_sem, quantity:three)).
+cats ---> (n,
+           sem:(cat, quantity:_),
+           agr:(num:plural)).
 
-find --->
-  (v,
-   agr:(agr, num:sg, per:third),
-   sem:(find, subj:SubjSem, obj:ObjSem),
-   subcat:(ne_list,
-           hd:(np, sem:SubjSem),
-           tl:(ne_list,
-               hd:(np, sem:ObjSem),
-               tl:e_list))).
+find ---> (v,
+           agr:num:plural,
+           sem:find,
+           subcat:[(Obj, np), (Subj, np)]).
 
-found --->
-  (v,
-   agr:(agr, num:sg, per:third),
-   sem:(find, subj:SubjSem, obj:ObjSem),
-   subcat:(ne_list,
-           hd:(np, sem:SubjSem),
-           tl:(ne_list,
-               hd:(np, sem:ObjSem),
-               tl:e_list))).
+finds ---> (v,
+            agr:num:singular,
+            sem:find,
+            subcat:[(Obj, np), (Subj, np)]).
 
-finds --->
-  (v,
-   agr:(agr, num:pl, per:third),
-   sem:(find, subj:SubjSem, obj:ObjSem),
-   subcat:(ne_list,
-           hd:(np, sem:SubjSem),
-           tl:(ne_list,
-               hd:(np, sem:ObjSem),
-               tl:e_list))).
+found ---> (v,
+            agr:num:_,
+            sem:find,
+            subcat:[(Obj, np), (Subj, np)]).
 
-scare --->
-  (v,
-   agr:(agr, num:sg, per:third),
-   sem:(scare, subj:SubjSem, obj:ObjSem),
-   subcat:(ne_list,
-           hd:(np, sem:SubjSem),
-           tl:(ne_list,
-               hd:(np, sem:ObjSem),
-               tl:e_list))).
+scare ---> (v,
+            agr:num:plural,
+            sem:scare,
+            subcat:[(Obj, np), (Subj, np)]).
 
-scared --->
-  (v,
-   agr:(agr, num:sg, per:third),
-   sem:(scare, subj:SubjSem, obj:ObjSem),
-   subcat:(ne_list,
-           hd:(np, sem:SubjSem),
-           tl:(ne_list,
-               hd:(np, sem:ObjSem),
-               tl:e_list))).
+scares ---> (v,
+             agr:num:singular,
+             sem:scare,
+             subcat:[(Obj, np), (Subj, np)]).
 
-scares --->
-  (v,
-   agr:(agr, num:pl, per:third),
-   sem:(scare, subj:SubjSem, obj:ObjSem),
-   subcat:(ne_list,
-           hd:(np, sem:SubjSem),
-           tl:(ne_list,
-               hd:(np, sem:ObjSem),
-               tl:e_list))).
+scared ---> (v,
+             agr:num:_,
+             sem:scare,
+             subcat:[(Obj, np), (Subj, np)]).
 
 % ======================
 

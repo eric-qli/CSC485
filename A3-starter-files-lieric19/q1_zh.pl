@@ -65,76 +65,55 @@ sem1(sem:S, S) if true.
 %    feature_name_2:feature_type_2, ...). 
 
 % === Your Code Here ===
+yi ---> (num,
+         sem:(quantity:one),
+         agr:(num:singular)).
 
-feixingyuan --->
-  (n,
-   agr:agr,
-   sem:pilot).
+liang ---> (num,
+           sem:(quantity:two),
+           agr:(num:plural)).
 
-hu --->
-  (n,
-   agr:agr,
-   sem:tiger).
+san ---> (num,
+          sem:(quantity:three),
+          agr:(num:plural)).
 
-mao --->
-  (n,
-   agr:agr,
-   sem:cat).
+feixingyuan ---> (n,
+                  sem:(pilot, quantity:_),
+                  agr:(num:_)).    % Chinese: no overt number on the noun
 
-ge --->
-  (cl,
-   agr:agr,
-   sem:n_sem).
+mao ---> (n,
+          sem:(cat, quantity:_),
+          agr:(num:_)).
 
-ming --->
-  (cl,
-   agr:agr,
-   sem:n_sem).
+hu ---> (n,
+         sem:(tiger, quantity:_),
+         agr:(num:_)).
 
-zhi --->
-  (cl,
-   agr:agr,
-   sem:n_sem).
+ge ---> (cl,
+         sem:n_sem,
+         agr:(num:_)).
 
-tou --->
-  (cl,
-   agr:agr,
-   sem:n_sem).
+ming ---> (cl,
+           sem:n_sem,
+           agr:(num:_)).
 
-zhao --->
-  (v,
-   agr:agr,
-   sem:(find, subj:SubjSem, obj:ObjSem),
-   subcat:(ne_list,
-           hd:(np, sem:SubjSem),
-           tl:(ne_list,
-               hd:(np, sem:ObjSem),
-               tl:e_list))).
+zhi ---> (cl,
+          sem:n_sem,
+          agr:(num:_)).
 
-xia --->
-  (v,
-   agr:agr,
-   sem:(scare, subj:SubjSem, obj:ObjSem),
-   subcat:(ne_list,
-           hd:(np, sem:SubjSem),
-           tl:(ne_list,
-               hd:(np, sem:ObjSem),
-               tl:e_list))).
+tou ---> (cl,
+          sem:n_sem,
+          agr:(num:_)).
 
-yi --->
-  (num,
-   agr:agr,
-   sem:(n_sem, quantity:one)).
+zhao ---> (v,
+           agr:(num:_),
+           sem:find,
+           subcat:[(Obj, np), (Subj, np)]).
 
-er --->
-  (num,
-   agr:agr,
-   sem:(n_sem, quantity:two)).
-
-san --->
-  (num,
-   agr:agr,
-   sem:(n_sem, quantity:three)).
+xia ---> (v,
+          agr:(num:_),
+          sem:scare,
+          subcat:[(Obj, np), (Subj, np)]).
 
 % ======================
 
