@@ -44,10 +44,8 @@ bot sub [category, sem, agr, list].
     %     ...
 
     % === Your Code Here ===
-    agr intro [num:num, per:person].
-
-    num sub [sg, pl].
-    person sub [first, second, third].
+    agr intro [num:number].
+    number sub [singular, plural].
     % ======================
 
 
