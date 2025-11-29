@@ -46,7 +46,7 @@ bot sub [category, sem, agr, cl_types, list].
     %     ...
 
     % === Your Code Here ===
-    agr intro [num:number].
+    agr intro [clf:cl_types].
 
     number sub [sg, pl].
     % ======================
