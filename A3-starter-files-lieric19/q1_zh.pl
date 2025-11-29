@@ -110,13 +110,13 @@ tou ---> (cl,
 zhao --->
   (v,
    agr:(agr, clf:_),
-   sem:(find, subj:SubjSem, obj:ObjSem),
+   sem:find,
    subcat:[(Obj, np), (Subj, np)]).
 
 xia --->
   (v,
    agr:(agr, clf:_),
-   sem:(scare, subj:SubjSem, obj:ObjSem),
+   sem:scare,
    subcat:[(Obj, np), (Subj, np)]).
 
 % ======================
