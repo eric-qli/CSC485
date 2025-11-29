@@ -132,30 +132,31 @@ xia ---> (v,
 % CLP -> CL N
 cl_n_clp rule
 (clp, agr:Agr, sem:Sem) ===>
-  cat> (cl, agr:Agr),
-  cat> (n,  agr:Agr, sem:Sem).
+    cat> (cl, agr:Agr),
+    cat> (n, agr:Agr, sem:Sem).
 
 % NP -> NUM CLP
 num_clp_np rule
 (np, agr:Agr, sem:Sem) ===>
-  cat> (num, agr:Agr),
-  cat> (clp, agr:Agr, sem:Sem).
+    cat> (num, agr:Agr),
+    cat> (clp, agr:Agr, sem:Sem).
 
 % NP -> N
 n_np rule
 (np, agr:Agr, sem:Sem) ===>
-  cat> (n, agr:Agr, sem:Sem).
+    cat> (n, agr:Agr, sem:Sem).
 
 % VP -> V NP
 v_np_vp rule
-(vp, agr:Agr, sem:Sem) ===>
-  cat> (v, agr:Agr, sem:Sem),
-  cat> (np, agr:_).
+(vp, agr:Agr, sem:(V_Sem, obj:ObjSem), subcat:(Rest, [_|_])) ===>
+    cat> (v, agr:Agr, sem:V_Sem,subcat:[Obj|Rest]),
+    cat> (Obj, np,sem:ObjSem).
+
 
 % S -> NP VP
 np_vp_s rule
-(s, agr:Agr, sem:Sem) ===>
-  cat> (np, agr:Agr),
-  cat> (vp, agr:Agr, sem:Sem).
+(s, agr:Agr, sem:(V_Sem, subj:SubjSem, obj:ObjSem), subcat:([], Rest)) ===>
+    cat> (Subj, np, agr:Agr, sem:SubjSem),
+    cat> (vp, agr:Agr, sem:(V_Sem, obj:ObjSem), subcat:[Subj|Rest]).
 
 % ======================

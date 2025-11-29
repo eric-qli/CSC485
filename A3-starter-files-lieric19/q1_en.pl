@@ -146,31 +146,32 @@ scared ---> (v,
 
 % === Your Code Here ===
 
+% ======================
 % NP -> Det N
 det_n_np rule
-(np, agr:Agr, sem:Sem) ===>
-  cat> (det, agr:Agr),
-  cat> (n, agr:Agr, sem:Sem).
+(np, agr:Agr, sem:(N_Sem, quantity:Quant)) ===>
+    cat> (det, agr:Agr, sem:(quantity:Quant)),
+    cat> (n, agr:Agr, sem:N_Sem).
 
 
 % NP -> Num N
 num_n_np rule
-(np, agr:Agr, sem:Sem) ===>
-  cat> (num, agr:Agr),
-  cat> (n, agr:Agr, sem:Sem).
+(np, agr:Agr, sem:(N_Sem, quantity:Quant)) ===>
+    cat> (num, agr:Agr, sem:(quantity:Quant)),
+    cat> (n, agr:Agr, sem:N_Sem).
 
 
-% VP -> V NP 
+% VP -> V NP
 v_np_vp rule
-(vp, agr:Agr, sem:Sem) ===>
-  cat> (v, agr:Agr, sem:Sem),
-  cat> (np, agr:_).
+(vp, agr:Agr, sem:(V_Sem, obj:ObjSem), subcat:(Rest, [_|_])) ===>
+    cat> (v, agr:Agr, sem:V_Sem, subcat:[Obj|Rest]),
+    cat> (Obj, np, sem:ObjSem).
 
 
 % S -> NP VP
 np_vp_s rule
-(s, agr:Agr, sem:Sem) ===>
-  cat> (np, agr:Agr),
-  cat> (vp, agr:Agr, sem:Sem).
+(s, agr:Agr, sem:(V_Sem, subj:SubjSem, obj:ObjSem), subcat:([], Rest)) ===>
+    cat> (Subj, np, agr:Agr, sem:SubjSem),
+    cat> (vp, agr:Agr, sem:(V_Sem, obj:ObjSem), subcat:[Subj|Rest]).
 
 % ======================
