@@ -47,8 +47,6 @@ bot sub [category, sem, agr, cl_types, list].
 
     % === Your Code Here ===
     agr intro [clf:cl_types].
-
-    number sub [sg, pl].
     % ======================
 
 
@@ -109,25 +107,17 @@ tou ---> (cl,
           sem:(n_sem, quantity:_), 
           agr:(agr, clf:tou)).
 
-zhao ---> 
+zhao --->
   (v,
    agr:(agr, clf:_),
    sem:(find, subj:SubjSem, obj:ObjSem),
-   subcat:(ne_list,
-           hd:(np, sem:SubjSem),
-           tl:(ne_list,
-               hd:(np, sem:ObjSem),
-               tl:e_list))).
+   subcat:[(Obj, np), (Subj, np)]).
 
-xia ---> 
+xia --->
   (v,
    agr:(agr, clf:_),
    sem:(scare, subj:SubjSem, obj:ObjSem),
-   subcat:(ne_list,
-           hd:(np, sem:SubjSem),
-           tl:(ne_list,
-               hd:(np, sem:ObjSem),
-               tl:e_list))).
+   subcat:[(Obj, np), (Subj, np)]).
 
 % ======================
 

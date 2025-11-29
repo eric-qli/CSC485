@@ -102,35 +102,41 @@ cats ---> (n,
            sem:(cat, quantity:_),
            agr:(num:pl)).
 
-find ---> (v,
-           agr:num:pl,
-           sem:find,
-           subcat:[(Obj, np), (Subj, np)]).
+find --->
+  (v,
+   agr:(agr, num:pl),
+   sem:(find, subj:SubjSem, obj:ObjSem),
+   subcat:[(Obj, np), (Subj, np)]).
 
-finds ---> (v,
-            agr:num:sg,
-            sem:find,
-            subcat:[(Obj, np), (Subj, np)]).
+finds --->
+  (v,
+   agr:(agr, num:sg),
+   sem:(find, subj:SubjSem, obj:ObjSem),
+   subcat:[(Obj, np), (Subj, np)]).
 
-found ---> (v,
-            agr:num:_,
-            sem:find,
-            subcat:[(Obj, np), (Subj, np)]).
+found --->
+  (v,
+   agr:(agr, num:_),
+   sem:(find, subj:SubjSem, obj:ObjSem),
+   subcat:[(Obj, np), (Subj, np)]).
 
-scare ---> (v,
-            agr:num:pl,
-            sem:scare,
-            subcat:[(Obj, np), (Subj, np)]).
+scare --->
+  (v,
+   agr:(agr, num:pl),
+   sem:(scare, subj:SubjSem, obj:ObjSem),
+   subcat:[(Obj, np), (Subj, np)]).
 
-scares ---> (v,
-             agr:num:sg,
-             sem:scare,
-             subcat:[(Obj, np), (Subj, np)]).
+scares --->
+  (v,
+   agr:(agr, num:sg),
+   sem:(scare, subj:SubjSem, obj:ObjSem),
+   subcat:[(Obj, np), (Subj, np)]).
 
-scared ---> (v,
-             agr:num:_,
-             sem:scare,
-             subcat:[(Obj, np), (Subj, np)]).
+scared --->
+  (v,
+   agr:(agr, num:_),
+   sem:(scare, subj:SubjSem, obj:ObjSem),
+   subcat:[(Obj, np), (Subj, np)]).
 
 % ======================
 
