@@ -152,7 +152,6 @@ v_np_vp rule
     cat> (v, agr:Agr, sem:V_Sem,subcat:[Obj|Rest]),
     cat> (Obj, np,sem:ObjSem).
 
-
 % S -> NP VP
 np_vp_s rule
 (s, agr:Agr, sem:(V_Sem, subj:SubjSem, obj:ObjSem), subcat:([], Rest)) ===>
