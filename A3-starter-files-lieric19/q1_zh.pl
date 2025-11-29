@@ -67,51 +67,51 @@ sem1(sem:S, S) if true.
 % === Your Code Here ===
 yi ---> (num,
          sem:(quantity:one),
-         agr:(num:sg)).
+         agr:(clf:sg)).
 
 liang ---> (num,
            sem:(quantity:two),
-           agr:(num:pl)).
+           agr:(clf:pl)).
 
 san ---> (num,
           sem:(quantity:three),
-          agr:(num:pl)).
+          agr:(clf:pl)).
 
 feixingyuan ---> (n,
                   sem:(pilot, quantity:_),
-                  agr:(num:_)).
+                  agr:(clf:_)).
 
 mao ---> (n,
           sem:(cat, quantity:_),
-          agr:(num:_)).
+          agr:(clf:_)).
 
 hu ---> (n,
          sem:(tiger, quantity:_),
-         agr:(num:_)).
+         agr:(clf:_)).
 
 ge ---> (cl,
          sem:n_sem,
-         agr:(num:_)).
+         agr:(clf:_)).
 
 ming ---> (cl,
            sem:n_sem,
-           agr:(num:_)).
+           agr:(clf:_)).
 
 zhi ---> (cl,
           sem:n_sem,
-          agr:(num:_)).
+          agr:(clf:_)).
 
 tou ---> (cl,
           sem:n_sem,
-          agr:(num:_)).
+          agr:(clf:_)).
 
 zhao ---> (v,
-           agr:(num:_),
+           agr:(clf:_),
            sem:find,
            subcat:[(Obj, np), (Subj, np)]).
 
 xia ---> (v,
-          agr:(num:_),
+          agr:(clf:_),
           sem:scare,
           subcat:[(Obj, np), (Subj, np)]).
 
