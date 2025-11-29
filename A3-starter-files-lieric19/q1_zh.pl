@@ -79,31 +79,35 @@ san ---> (num,
 
 feixingyuan ---> (n,
                   sem:(pilot, quantity:_),
-                  agr:(clf:_)).
+                  agr:(clf:ge)).
+
+feixingyuan ---> (n,
+                  sem:(pilot, quantity:_),
+                  agr:(clf:ming)).
 
 mao ---> (n,
           sem:(cat, quantity:_),
-          agr:(clf:_)).
+          agr:(clf:zhi)).
 
 hu ---> (n,
          sem:(tiger, quantity:_),
-         agr:(clf:_)).
+         agr:(clf:tou)).
 
 ge ---> (cl,
          sem:n_sem,
-         agr:(clf:_)).
+         agr:(clf:ge)).
 
 ming ---> (cl,
            sem:n_sem,
-           agr:(clf:_)).
+           agr:(clf:ming)).
 
 zhi ---> (cl,
           sem:n_sem,
-          agr:(clf:_)).
+          agr:(clf:zhi)).
 
 tou ---> (cl,
           sem:n_sem,
-          agr:(clf:_)).
+          agr:(clf:tou)).
 
 zhao ---> (v,
            agr:(clf:_),
