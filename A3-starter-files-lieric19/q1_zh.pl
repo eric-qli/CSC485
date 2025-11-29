@@ -145,20 +145,20 @@ xia --->
 
 % CLP -> CL N
 cl_n_clp rule
-(clp, agr:Agr, sem:Sem) ===>
-    cat> (cl, agr:Agr),
-    cat> (n, agr:Agr, sem:Sem).
+(clp, agr:Agr, sem:(N_Sem, quantity:_)) ===>
+    cat> (cl, agr:Agr, sem:(n_sem, quantity:_)),
+    cat> (n,  agr:Agr, sem:(N_Sem, quantity:_)).
 
 % NP -> NUM CLP
 num_clp_np rule
-(np, agr:Agr, sem:Sem) ===>
-    cat> (num, agr:Agr),
-    cat> (clp, agr:Agr, sem:Sem).
+(np, agr:Agr, sem:(N_Sem, quantity:Quant)) ===>
+    cat> (num, agr:Agr, sem:(n_sem, quantity:Quant)),
+    cat> (clp, agr:Agr, sem:(N_Sem, quantity:_)).
 
 % NP -> N
 n_np rule
-(np, agr:Agr, sem:Sem) ===>
-    cat> (n, agr:Agr, sem:Sem).
+(np, agr:Agr, sem:(N_Sem, quantity:Quant)) ===>
+    cat> (n, agr:Agr, sem:(N_Sem, quantity:Quant)).
 
 % VP -> V NP
 v_np_vp rule
