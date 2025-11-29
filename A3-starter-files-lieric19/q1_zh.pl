@@ -133,33 +133,28 @@ xia --->
 
 % === Your Code Here ===
 
-% CLP -> CL N
-cl_n_clp rule
-(clp, agr:Agr, sem:(N_Sem, quantity:_)) ===>
-    cat> (cl, agr:Agr, sem:(n_sem, quantity:_)),
-    cat> (n,  agr:Agr, sem:(N_Sem, quantity:_)).
+% clp ->num CL, classifier phrase, 一只
+clp rule
+(clp, sem:(quantity:Quant), agr:Agr) ===>
+sem_head> (num, sem:(quantity:Quant)),
+cat> (cl, agr:Agr).
 
-% NP -> NUM CLP
-num_clp_np rule
-(np, agr:Agr, sem:(N_Sem, quantity:Quant)) ===>
-    cat> (num, agr:Agr, sem:(n_sem, quantity:Quant)),
-    cat> (clp, agr:Agr, sem:(N_Sem, quantity:_)).
+% NP -> CLP N, classifier phrase + noun, 一只羊
+np rule
+(np, sem:(Sem, quantity:Quant), agr:Agr) ===>
+cat> (clp, sem:(quantity:Quant), agr: Agr),
+sem_head> (n, sem:Sem, agr:Agr).
 
-% NP -> N
-n_np rule
-(np, agr:Agr, sem:(N_Sem, quantity:Quant)) ===>
-    cat> (n, agr:Agr, sem:(N_Sem, quantity:Quant)).
+%VP ->V NP, verb + noun phrase, 看见一只羊
+vp rule
+(vp, sem:(Sem, obj:Object_sem), agr:Agr, subcat:(Rest, [_|_])) ===>
+sem_head> (v, sem:Sem, agr:Agr, subcat:[Obj|Rest]),
+cat> (Obj, np, sem:Object_sem).
 
-% VP -> V NP
-v_np_vp rule
-(vp, agr:Agr, sem:(V_Sem, obj:ObjSem), subcat:(Rest, [_|_])) ===>
-    cat> (v, agr:Agr, sem:V_Sem, subcat:[Obj|Rest]),
-    cat> (Obj, np, sem:ObjSem).
-
-% S -> NP VP
-np_vp_s rule
-(s, agr:Agr, sem:(V_Sem, subj:SubjSem, obj:ObjSem), subcat:([], Rest)) ===>
-    cat> (Subj, np, agr:Agr, sem:SubjSem),
-    cat> (vp, agr:Agr, sem:(V_Sem, obj:ObjSem), subcat:[Subj|Rest]).
+%S->NP VP noun phrase + verb phrase 一名学生看见一只羊
+s rule
+(s, agr:Agr, sem:(Sem, subj:Subject_sem, obj:Object_sem), subcat:([], Rest)) ===>
+cat> (Subj, np, agr:Agr, sem:Subject_sem),
+sem_head> (vp, agr:Agr, sem:(Sem, obj:Object_sem), subcat:[Subj|Rest]).
 
 % ======================

@@ -153,31 +153,29 @@ scared --->
 % === Your Code Here ===
 
 % ======================
-% NP -> Det N
-det_n_np rule
-(np, agr:Agr, sem:(N_Sem, quantity:Quant)) ===>
-    cat> (det, agr:Agr, sem:(quantity:Quant)),
-    cat> (n, agr:Agr, sem:N_Sem).
+%% NP → Det N: combining a Determiner (Det) with a Noun (N)
+np_det rule
+(np, agr:Agr, sem:(Sem, quantity:Quant)) ===>
+cat> (det, agr:Agr, sem:(quantity:Quant)),
+sem_head> (n, agr:Agr, sem:Sem).
 
 
-% NP -> Num N
-num_n_np rule
-(np, agr:Agr, sem:(N_Sem, quantity:Quant)) ===>
-    cat> (num, agr:Agr, sem:(quantity:Quant)),
-    cat> (n, agr:Agr, sem:N_Sem).
+% NP → Num N: Numeral (Num) is combined with a Noun (N)
+np_num rule
+(np, agr:Agr, sem:(Sem, quantity:Quant)) ===>
+cat> (num, agr:Agr, sem:(quantity:Quant)),
+sem_head> (n, agr:Agr, sem:Sem).
 
 
-% VP -> V NP
-v_np_vp rule
-(vp, agr:Agr, sem:(V_Sem, obj:ObjSem), subcat:(Rest, [_|_])) ===>
-    cat> (v, agr:Agr, sem:V_Sem, subcat:[Obj|Rest]),
-    cat> (Obj, np, sem:ObjSem).
+% VP → V NP : Verb (V) followed by a Noun Phrase (NP)
+vp rule
+(vp, agr:Agr, sem:(Sem, obj:Object_sem), subcat:(Rest, [_|_])) ===>
+sem_head> (v, agr:Agr, sem:Sem, subcat:[Obj|Rest]),
+cat> (Obj, np, sem:Object_sem).
 
-
-% S -> NP VP
-np_vp_s rule
-(s, agr:Agr, sem:(V_Sem, subj:SubjSem, obj:ObjSem), subcat:([], Rest)) ===>
-    cat> (Subj, np, agr:Agr, sem:SubjSem),
-    cat> (vp, agr:Agr, sem:(V_Sem, obj:ObjSem), subcat:[Subj|Rest]).
-
+% S → NP VP : Noun Phrase (NP) followed by a Verb Phrase (VP).
+s rule
+(s, agr:Agr, sem:(Sem, subj:Subject_sem, obj:Object_sem), subcat:([], Rest)) ===>
+cat> (Subj, np, agr:Agr, sem:Subject_sem),
+sem_head> (vp, agr:Agr, sem:(Sem, obj:Object_sem), subcat:[Subj|Rest]).
 % ======================
