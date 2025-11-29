@@ -66,13 +66,16 @@ sem1(sem:S, S) if true.
 
 % === Your Code Here ===
 yi ---> (num,
-         sem:(quantity:one).
+         sem:(n_sem, quantity:one),
+         agr:agr).
 
 liang ---> (num,
-           sem:(quantity:two).
+           sem:(n_sem, quantity:two),
+           agr:agr).
 
 san ---> (num,
-          sem:(quantity:three).
+          sem:(n_sem, quantity:three),
+          agr:agr).
 
 feixingyuan ---> (n,
                   sem:(pilot, quantity:_),
