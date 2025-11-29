@@ -45,7 +45,7 @@ bot sub [category, sem, agr, list].
 
     % === Your Code Here ===
     agr intro [num:number].
-    number sub [singular, plural].
+    number sub [sg, pl].
     % ======================
 
 
@@ -64,51 +64,51 @@ sem1(sem:S, S) if true.
 % === Your Code Here ===
 a ---> (det,
         sem:(quantity:one),
-        agr:(num:singular)).
+        agr:(num:sg)).
 
 one ---> (num,
           sem:(quantity:one),
-          agr:(num:singular)).
+          agr:(num:sg)).
 
 two ---> (num,
           sem:(quantity:two),
-          agr:(num:plural)).
+          agr:(num:pl)).
 
 three ---> (num,
             sem:(quantity:three),
-            agr:(num:plural)).
+            agr:(num:pl)).
 
 pilot ---> (n,
             sem:(pilot, quantity:_),
-            agr:(num:singular)).
+            agr:(num:sg)).
 
 pilots ---> (n,
              sem:(pilot, quantity:_),
-             agr:(num:plural)).
+             agr:(num:pl)).
 
 tiger ---> (n,
             sem:(tiger, quantity:_),
-            agr:(num:singular)).
+            agr:(num:sg)).
 
 tigers ---> (n,
              sem:(tiger, quantity:_),
-             agr:(num:plural)).
+             agr:(num:pl)).
 
 cat ---> (n,
           sem:(cat, quantity:_),
-          agr:(num:singular)).
+          agr:(num:sg)).
 
 cats ---> (n,
            sem:(cat, quantity:_),
-           agr:(num:plural)).
+           agr:(num:pl)).
 
 find ---> (v,
-           agr:num:plural,
+           agr:num:pl,
            sem:find,
            subcat:[(Obj, np), (Subj, np)]).
 
 finds ---> (v,
-            agr:num:singular,
+            agr:num:sg,
             sem:find,
             subcat:[(Obj, np), (Subj, np)]).
 
@@ -118,12 +118,12 @@ found ---> (v,
             subcat:[(Obj, np), (Subj, np)]).
 
 scare ---> (v,
-            agr:num:plural,
+            agr:num:pl,
             sem:scare,
             subcat:[(Obj, np), (Subj, np)]).
 
 scares ---> (v,
-             agr:num:singular,
+             agr:num:sg,
              sem:scare,
              subcat:[(Obj, np), (Subj, np)]).
 

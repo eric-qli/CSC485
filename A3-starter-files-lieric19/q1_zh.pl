@@ -67,19 +67,19 @@ sem1(sem:S, S) if true.
 % === Your Code Here ===
 yi ---> (num,
          sem:(quantity:one),
-         agr:(num:singular)).
+         agr:(num:sg)).
 
 liang ---> (num,
            sem:(quantity:two),
-           agr:(num:plural)).
+           agr:(num:pl)).
 
 san ---> (num,
           sem:(quantity:three),
-          agr:(num:plural)).
+          agr:(num:pl)).
 
 feixingyuan ---> (n,
                   sem:(pilot, quantity:_),
-                  agr:(num:_)).    % Chinese: no overt number on the noun
+                  agr:(num:_)).
 
 mao ---> (n,
           sem:(cat, quantity:_),
