@@ -67,57 +67,67 @@ sem1(sem:S, S) if true.
 % === Your Code Here ===
 yi ---> (num,
          sem:(n_sem, quantity:one),
-         agr:agr).
+         agr:(agr, clf:_)).
 
 liang ---> (num,
-           sem:(n_sem, quantity:two),
-           agr:agr).
+            sem:(n_sem, quantity:two),
+            agr:(agr, clf:_)).
 
 san ---> (num,
           sem:(n_sem, quantity:three),
-          agr:agr).
+          agr:(agr, clf:_)).
 
 feixingyuan ---> (n,
                   sem:(pilot, quantity:_),
-                  agr:(clf:ge)).
+                  agr:(agr, clf:ge)).
 
 feixingyuan ---> (n,
                   sem:(pilot, quantity:_),
-                  agr:(clf:ming)).
+                  agr:(agr, clf:ming)).
 
 mao ---> (n,
           sem:(cat, quantity:_),
-          agr:(clf:zhi)).
+          agr:(agr, clf:zhi)).
 
 hu ---> (n,
          sem:(tiger, quantity:_),
-         agr:(clf:tou)).
+         agr:(agr, clf:tou)).
 
-ge ---> (cl,
-         sem:n_sem,
-         agr:(clf:ge)).
+ge  ---> (cl, 
+          sem:(n_sem, quantity:_), 
+          agr:(agr, clf:ge)).
 
-ming ---> (cl,
-           sem:n_sem,
-           agr:(clf:ming)).
+ming ---> (cl, 
+           sem:(n_sem, quantity:_), 
+           agr:(agr, clf:ming)).
 
-zhi ---> (cl,
-          sem:n_sem,
-          agr:(clf:zhi)).
+zhi ---> (cl, 
+          sem:(n_sem, quantity:_), 
+          agr:(agr, clf:zhi)).
 
-tou ---> (cl,
-          sem:n_sem,
-          agr:(clf:tou)).
+tou ---> (cl, 
+          sem:(n_sem, quantity:_), 
+          agr:(agr, clf:tou)).
 
-zhao ---> (v,
-           agr:(clf:_),
-           sem:find,
-           subcat:[(Obj, np), (Subj, np)]).
+zhao ---> 
+  (v,
+   agr:(agr, clf:_),
+   sem:(find, subj:SubjSem, obj:ObjSem),
+   subcat:(ne_list,
+           hd:(np, sem:SubjSem),
+           tl:(ne_list,
+               hd:(np, sem:ObjSem),
+               tl:e_list))).
 
-xia ---> (v,
-          agr:(clf:_),
-          sem:scare,
-          subcat:[(Obj, np), (Subj, np)]).
+xia ---> 
+  (v,
+   agr:(agr, clf:_),
+   sem:(scare, subj:SubjSem, obj:ObjSem),
+   subcat:(ne_list,
+           hd:(np, sem:SubjSem),
+           tl:(ne_list,
+               hd:(np, sem:ObjSem),
+               tl:e_list))).
 
 % ======================
 
@@ -153,8 +163,8 @@ n_np rule
 % VP -> V NP
 v_np_vp rule
 (vp, agr:Agr, sem:(V_Sem, obj:ObjSem), subcat:(Rest, [_|_])) ===>
-    cat> (v, agr:Agr, sem:V_Sem,subcat:[Obj|Rest]),
-    cat> (Obj, np,sem:ObjSem).
+    cat> (v, agr:Agr, sem:V_Sem, subcat:[Obj|Rest]),
+    cat> (Obj, np, sem:ObjSem).
 
 % S -> NP VP
 np_vp_s rule
